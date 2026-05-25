@@ -1,4 +1,12 @@
 services:
+
+  express-app:
+    image: famo1901/express-app:latest
+    ports:
+      - "8080:8080"
+    restart: always
+    container_name: express-app
+
   watchtower:
     image: nickfedor/watchtower
     environment:
@@ -6,3 +14,4 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: watchtower
+    command: express-app
